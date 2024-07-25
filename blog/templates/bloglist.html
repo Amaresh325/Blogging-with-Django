@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+</head>
+<body>
+    <h1> Blog Post</h1>
+    <a href="{% url 'blogCreation' %}"><h1>CREATE BLOG</h1></a>
+    <ul>
+        {% for i in blogs %}
+        <li>
+            <h2>{{i.title}}</h2>
+            <p>{{i.content}}</p>
+            {% if i.image %}
+            <img src="{{i.image.url}}" height="500" alt="{{post.title}}">
+            {% endif %}
+            {% if i.video %}
+            <video width="600" height="500" controls autoplay>
+                <source src="{{i.video.url}}" type="video/mp4">
+                Your browser doesnot support the video tag
+            </video>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
